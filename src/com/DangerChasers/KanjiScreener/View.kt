@@ -1,7 +1,7 @@
-import net.kanjitomo.OCRResults
+package com.DangerChasers.KanjiScreener
+
 import java.awt.*
 import javax.swing.*
-import javax.swing.border.Border
 
 class View() {
 
