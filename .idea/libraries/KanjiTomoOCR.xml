@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="KanjiTomoOCR">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/KanjiTomoOCR.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/KanjiTomoOCR.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/KanjiTomoOCR.jar!/" />
+    </SOURCES>
+  </library>
+</component>
