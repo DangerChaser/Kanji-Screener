@@ -6,3 +6,7 @@ Kanji Screener is a program that looks at an area around the mouse pointer on th
 
 # Modifying Code
 Follow the instructions at https://github.com/sakarika/kanjitomo-ocr to add KanjiTomo OCR to the project.
+
+# Credits
+Optical Character Recognition from <a href="https://github.com/sakarika/kanjitomo-ocr" title="KanjiTomo OCR">KanjiTomo OCR</a>
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
