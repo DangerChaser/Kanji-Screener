@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="Kanji Screener">
+    <output-path>$PROJECT_DIR$/out/artifacts/Kanji_Screener</output-path>
+    <root id="root">
+      <element id="archive" name="Kanji_Screener.jar">
+        <element id="module-output" name="Kanji Screener" />
+      </element>
+    </root>
+  </artifact>
+</component>
