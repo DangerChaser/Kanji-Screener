@@ -8,7 +8,7 @@ fun main() {
     val tomo = KanjiTomo()
     tomo.loadData()
     val screenshot = Screenshot()
-    val gui = GUI()
+    val view = View()
 
     while(true) {
         screenshot.capture()
@@ -16,11 +16,12 @@ fun main() {
         tomo.setTargetImage(image)
         val point = MouseInfo.getPointerInfo().location
         val results = tomo.runOCR(point)
-        if (results != null) {
-//            println(results)
-            gui.update(results)
+        if (results != null && results.words.size > 0) {
+            val word = results.words.get(0)
+            view.kanjiPanel.setText(word.kanji, word.kana)
+            view.descriptionPanel.setText(word.description)
         }
 
-        sleep(1000)
+        sleep(500)
     }
 }

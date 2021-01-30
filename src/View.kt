@@ -3,61 +3,59 @@ import java.awt.*
 import javax.swing.*
 import javax.swing.border.Border
 
-class GUI() {
+class View() {
 
-    private val frame : JFrame = JFrame("Furigana Screen Reader")
+    private val frame : JFrame = JFrame("Kanji Screener")
 
-    private val kanjiPanel : KanjiPanel = KanjiPanel()
-    private val descriptionPanel : DescriptionPanel = DescriptionPanel()
+    val kanjiPanel : KanjiPanel = KanjiPanel()
+    val descriptionPanel : DescriptionPanel = DescriptionPanel()
 
     init {
         frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
         frame.size = Dimension(420, 310)
+        frame.isResizable = false
         frame.isAlwaysOnTop = true
+        frame.iconImage = ImageIcon("icon.png").image
         frame.layout = BorderLayout()
-
-//        val image = ImageIcon("icon.png");
-//        frame.iconImage = image.image
 
         frame.contentPane.background = Color.DARK_GRAY
 
-        kanjiPanel.preferredSize = Dimension(300, 80)
-        frame.add(kanjiPanel, BorderLayout.NORTH)
+        kanjiPanel.preferredSize = Dimension(300, 100)
+        descriptionPanel.preferredSize = Dimension(300, 180)
 
-        descriptionPanel.preferredSize = Dimension(300, 200)
-        frame.add(descriptionPanel, BorderLayout.SOUTH)
+        frame.add(kanjiPanel, BorderLayout.PAGE_START)
+        frame.add(descriptionPanel, BorderLayout.CENTER)
 
         frame.isVisible = true
-    }
-
-    fun update(results: OCRResults) {
-        kanjiPanel.kanjiLabel.text = results.words?.get(0)?.kanji ?: ""
-        kanjiPanel.kanaLabel.text = results.words?.get(0)?.kana ?: ""
-        descriptionPanel.textArea.text = results.words?.get(0)?.description ?: ""
     }
 }
 
 class KanjiPanel : JPanel() {
-    val kanjiLabel : JLabel = JLabel()
-    val kanaLabel : JLabel = JLabel()
+    private val kanjiLabel : JLabel = JLabel()
+    private val kanaLabel : JLabel = JLabel()
 
     init {
-        layout = BorderLayout()
+        layout = GridLayout(2, 1)
 
         kanjiLabel.foreground = Color.BLACK
         kanjiLabel.font = Font("msgothic.ttc", Font.PLAIN, 42)
         kanjiLabel.horizontalAlignment = JLabel.CENTER
-        add(kanjiLabel, BorderLayout.SOUTH)
+        add(kanjiLabel)
 
         kanaLabel.foreground = Color.BLACK
         kanaLabel.font = Font("msgothic.ttc", Font.PLAIN, 24)
         kanaLabel.horizontalAlignment = JLabel.CENTER
-        add(kanaLabel, BorderLayout.NORTH)
+        add(kanaLabel)
+    }
+
+    fun setText(kanji : String, kana : String) {
+        kanjiLabel.text = kanji
+        kanaLabel.text = kana
     }
 }
 
 class DescriptionPanel : JPanel() {
-    val textArea : JTextArea = JTextArea()
+    private val textArea : JTextArea = JTextArea()
 
     init {
         textArea.foreground = Color.BLACK
@@ -67,9 +65,13 @@ class DescriptionPanel : JPanel() {
         textArea.isEditable = false
 
         val scrollPane = JScrollPane(textArea)
-        scrollPane.preferredSize = Dimension(400, 200)
+        scrollPane.preferredSize = Dimension(400, 164)
         scrollPane.verticalScrollBarPolicy = ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED
 
         add(scrollPane)
+    }
+
+    fun setText(text : String) {
+        textArea.text = text
     }
 }
